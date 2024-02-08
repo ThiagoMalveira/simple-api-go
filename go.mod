@@ -1,9 +1,8 @@
 module exemple.com/api
 
-go 1.22.0
+go 1.23.0
 
 require (
-	github.com/filhodanuvem/ytgoapi v0.0.0-20231031092513-c9b0884cca40
 	github.com/gin-gonic/gin v1.9.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx v3.6.2+incompatible
