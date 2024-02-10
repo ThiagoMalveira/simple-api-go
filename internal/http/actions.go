@@ -8,9 +8,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/thiagomalveira/simple-go-api/internal"
-	"github.com/thiagomalveira/simple-go-api/internal/database"
-	"github.com/thiagomalveira/simple-go-api/internal/post"
+	"github.com/thiagomalveira/simple-api-go/internal"
+	"github.com/thiagomalveira/simple-api-go/internal/database"
+	"github.com/thiagomalveira/simple-api-go/internal/post"
 )
 
 var service post.Service

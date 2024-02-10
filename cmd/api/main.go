@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 
-	"github.com/thiagomalveira/simple-go-api/internal/database"
-	"github.com/thiagomalveira/simple-go-api/internal/observability"
+	"github.com/thiagomalveira/simple-api-go/internal/database"
+	"github.com/thiagomalveira/simple-api-go/internal/observability"
 
 	"github.com/gin-gonic/gin"
-	"github.com/thiagomalveira/simple-go-api/internal/http"
+	"github.com/thiagomalveira/simple-api-go/internal/http"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 )
 

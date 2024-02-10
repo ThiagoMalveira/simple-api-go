@@ -21,14 +21,10 @@ type OtelConfig struct {
 	OtelExporterOtlpInsecure bool
 }
 
-// SetupOtel bootstraps the OpenTelemetry pipeline.
-// If it does not return an error, make sure to call shutdown for proper cleanup.
 func SetupOtel(ctx context.Context, config OtelConfig) (shutdown func(context.Context) error, err error) {
 	var shutdownFuncs []func(context.Context) error
 
-	// shutdown calls cleanup functions registered via shutdownFuncs.
-	// The errors from the calls are joined.
-	// Each registered cleanup will be invoked once.
+
 	shutdown = func(ctx context.Context) error {
 		var err error
 		for _, fn := range shutdownFuncs {
@@ -38,28 +34,25 @@ func SetupOtel(ctx context.Context, config OtelConfig) (shutdown func(context.Co
 		return err
 	}
 
-	// handleErr calls shutdown for cleanup and makes sure that all errors are returned.
 	handleErr := func(inErr error) {
 		err = errors.Join(inErr, shutdown(ctx))
 	}
 
-	// Setup resource.
 	res, err := newResource(config)
 	if err != nil {
 		handleErr(err)
 		return
 	}
 
-	// Setup trace provider.
 	tracerProvider, err := newTraceProvider(ctx, config, res)
 	if err != nil {
 		handleErr(err)
 		return
 	}
+
 	shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
 	otel.SetTracerProvider(tracerProvider)
 
-	// Setup meter provider.
 	meterProvider, err := newMeterProvider(ctx, config, res)
 	if err != nil {
 		handleErr(err)
