@@ -6,7 +6,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/google/uuid"
-	"github.com/thiagomalveira/simple-go-api/internal"
+	"github.com/thiagomalveira/simple-api-go/internal"
 )
 
 var ErrPostBodyEmpty = errors.New("post body is empty")

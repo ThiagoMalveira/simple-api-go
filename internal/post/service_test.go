@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"github.com/thiagomalveira/simple-go-api/internal"
+	"github.com/thiagomalveira/simple-api-go/internal"
 )
 
 //
